@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>web日志分析平台 - {% block title %}{% endblock %}</title>
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/static/css/box-extend.css" rel="stylesheet" type="text/css">
+<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/bootstrap/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/amcharts.js"></script>
+<script type="text/javascript" src="/static/js/custom.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".nav li").removeClass("active");
+    var url = window.location.href;
+    url = url.replace(/http:\/\//g,"");
+    url = url.replace(/\/+$/g,"");
+    var ptype = url.split("/");
+    var len = ptype.length - 1;
+    if(len == 0){
+       $(".index").addClass("active"); 
+    }else{
+        $("."+ptype[len]).addClass("active");
+    }
+})
+</script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a href="/" class="brand">WEB 日志分析平台</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    您好， <a class="navbar-link" href="">寞踪</a>
+                </p>
+                <ul class="nav">
+                    <li class="index active"><a href="/">首页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="in-content row">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

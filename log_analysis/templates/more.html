@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}首页{% endblock %}
+{% block content %}
+<div class="row-fluid">
+    <div class="box">
+        <h4 class="box-header round-top">{{ itypestr }}汇总</h4>
+        <div class="box-container-toggle">
+            <div class="box-content">
+                <div class="list">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width:50%; word-wrap:break-word; word-break:break-all;">IP</th>
+                            <th>数量</th>
+                            <th>操作</th>
+                        </tr>
+                        {% for key,value in pagedict  %} 
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                            <td><a href='/detail?type={{ itype }}&path="{{ key }}"' target="_blank">详细</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
